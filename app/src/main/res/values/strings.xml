@@ -1,0 +1,27 @@
+<resources>
+    <string name="app_name">lessonBleInteraction01</string>
+    <string name="action_settings">Settings</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="default_device_name">Unknown Device</string>
+    <string name="default_device_address" translatable="false">00:00:00:00:00:00</string>
+    <string name="message_permission_granted">Permission %1$s is granted</string>
+    <string name="message_permission_not_granted">Permission %1$s is not granted</string>
+    <string name="action_scan">Scan</string>
+    <string name="action_stop_scan">Stop Scan</string>
+    <string name="default_uuid" translatable="false">123e4567-e89b-12d3-a456-426614174000</string>
+    <string name="default_characterstic_value">Unknown value</string>
+    <string name="device_connect">Connect</string>
+    <string name="device_disconnect">Disconnect</string>
+    <string name="device_bond">Bond Device</string>
+    <string name="device_unbond">Unbond device</string>
+    <string name="action_connect">Connect</string>
+    <string name="action_close">Close</string>
+    <string name="action_scanner">To Scanner</string>
+    <string name="description_pairing">Paired/Not paired BLE device</string>
+    <!-- TODO: Remove or change this placeholder text -->
+</resources>

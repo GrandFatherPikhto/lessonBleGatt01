@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/scanFragment">
+
+    <fragment
+        android:id="@+id/scanFragment"
+        android:name="com.grandfatherpikhto.lessonblegatt01.ui.fragments.ScanFragment"
+        android:label="@string/first_fragment_label"
+        tools:layout="@layout/fragment_scan">
+
+        <action
+            android:id="@+id/action_scanFragment_to_gattFragment"
+            app:destination="@id/gattFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/gattFragment"
+        android:name="com.grandfatherpikhto.lessonblegatt01.ui.fragments.GattFragment"
+        android:label="@string/second_fragment_label"
+        tools:layout="@layout/fragment_gatt">
+
+        <action
+            android:id="@+id/action_gattFragment_to_scanFragment"
+            app:destination="@id/scanFragment" />
+    </fragment>
+</navigation>
