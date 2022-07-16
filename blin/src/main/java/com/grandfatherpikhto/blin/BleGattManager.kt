@@ -26,7 +26,9 @@ class BleGattManager constructor(private val bleManager: BleManager,
     private var scope = CoroutineScope(dispatcher)
 
     private var attemptReconnect = true
+    val isReconnect get() = attemptReconnect
     private var reconnectAttempts = 0
+    val attempt get() = reconnectAttempts
     private val maxAttempts = 6
 
     private val msfConnectionState  = MutableStateFlow(State.Disconnected)
@@ -74,12 +76,16 @@ class BleGattManager constructor(private val bleManager: BleManager,
 
     fun connect(address:String) : BluetoothGatt? {
         Log.d(logTag, "connect($address)")
+        if (connectionState != State.Disconnected) {
+            return bluetoothGatt
+        }
+
         bluetoothAdapter.getRemoteDevice(address)?.let { device ->
             msfConnectionState.tryEmit(State.Connecting)
             bluetoothDevice = device
             attemptReconnect = true
             reconnectAttempts = 0
-            doConnect()
+            return doConnect()
         }
 
         return null
@@ -112,10 +118,12 @@ class BleGattManager constructor(private val bleManager: BleManager,
      */
     fun disconnect() {
         Log.d(logTag, "disconnect()")
-        attemptReconnect = false
-        reconnectAttempts = 0
-        msfConnectionState.tryEmit(State.Disconnecting)
-        doDisconnect()
+        if (connectionState == State.Connected) {
+            attemptReconnect = false
+            reconnectAttempts = 0
+            msfConnectionState.tryEmit(State.Disconnecting)
+            doDisconnect()
+        }
     }
 
     private fun doDisconnect() = runBlocking {
